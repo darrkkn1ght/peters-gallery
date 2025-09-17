@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Funbi-chan 💕✨ Gallery</title>
+    <link rel="icon" href="public/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #2563eb 0%, #059669 100%);
+            --secondary-gradient: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
+            --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #14b8a6 100%);
+            --glass-bg: rgba(59, 130, 246, 0.08);
+            --glass-border: rgba(59, 130, 246, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.9);
+            --text-tertiary: rgba(255, 255, 255, 0.7);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(-45deg, #1e3a8a, #065f46, #0c4a6e, #166534);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glass {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(59, 130, 246, 0.12);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            box-shadow: 0 8px 32px 0 rgba(37, 99, 235, 0.2);
+        }
+
+        .glass-strong {
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            box-shadow: 0 12px 40px 0 rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(37, 99, 235, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(59, 130, 246, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .floating-elements {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(59, 130, 246, 0.8);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+
+        .title-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .video-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(37, 99, 235, 0.1), rgba(5, 150, 105, 0.1));
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .modal-backdrop {
+            backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .theme-toggle {
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(59, 130, 246, 0.25);
+            transform: scale(1.05);
+        }
+
+        .entrance-animation {
+            animation: entranceSlide 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            opacity: 0;
+        }
+
+        @keyframes entranceSlide {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen w-full flex flex-col items-center justify-center relative" id="main-body">
+    <!-- Floating Elements Background -->
+    <div class="floating-elements">
+        <div class="floating-element" style="left: 10%; top: 20%; animation-delay: 0s;"></div>
+        <div class="floating-element" style="left: 20%; top: 80%; animation-delay: 2s;"></div>
+        <div class="floating-element" style="left: 80%; top: 30%; animation-delay: 4s;"></div>
+        <div class="floating-element" style="left: 70%; top: 70%; animation-delay: 1s;"></div>
+        <div class="floating-element" style="left: 30%; top: 50%; animation-delay: 3s;"></div>
+        <div class="floating-element" style="left: 90%; top: 80%; animation-delay: 5s;"></div>
+    </div>
+
+    <!-- Theme Toggle Button -->
+    <button id="themeToggleBtn" aria-label="Toggle theme" class="fixed top-6 right-6 z-40 p-3 rounded-xl theme-toggle focus:ring-2 focus:ring-blue-500/40 focus:outline-none">
+        <span id="themeToggleIcon" class="text-xl">🌙</span>
+    </button>
+
+    <!-- About Button -->
+    <button id="aboutBtn" title="About" class="fixed left-6 bottom-6 z-40 px-5 py-3 glass rounded-xl hover:bg-white/20 transition-all duration-300 focus:ring-2 focus:ring-blue-500/40 focus:outline-none text-white font-medium">
+        About
+    </button>
+
+    <!-- Consent Modal -->
+    <div id="consentModal" class="fixed inset-0 flex items-center justify-center z-50 modal-backdrop transition-all">
+        <div class="glass-strong rounded-2xl p-8 max-w-md mx-4 shadow-2xl flex flex-col items-center gap-6 text-center entrance-animation">
+            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-emerald-600 rounded-full flex items-center justify-center mb-2">
+                <span class="text-2xl">💙</span>
+            </div>
+            <h2 class="text-3xl font-bold text-white title-font">Age Verification</h2>
+            <p class="text-white/80 leading-relaxed">
+                This gallery contains personal content. Please confirm you are 18 years or older to continue.
+            </p>
+            <div class="flex flex-col w-full gap-3 mt-4">
+                <button id="agreeConsent" class="w-full px-6 py-3 btn-primary text-white font-semibold rounded-xl focus:ring-2 focus:ring-blue-500/50 focus:outline-none">
+                    Yes, I'm 18+
+                </button>
+                <button id="declineConsent" class="w-full px-6 py-3 btn-secondary text-white/90 font-medium rounded-xl">
+                    Exit
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex flex-col items-center justify-center gap-8 py-24 px-4 fade-in" style="animation-delay: 0.3s;">
+        <div class="glass-strong p-10 lg:p-16 rounded-3xl shadow-2xl flex flex-col items-center gap-8 max-w-2xl w-full">
+            <!-- Video Container -->
+            <div class="video-container w-full max-w-md">
+                <video src="media/funbi9.mp4" autoplay loop muted playsinline 
+                       class="w-full rounded-xl object-cover"
+                       style="min-height:200px; max-height:300px;">
+                    <source src="media/funbi9.mp4" type="video/mp4">
+                    Sorry, your browser doesn't support embedded videos.
+                </video>
+            </div>
+
+            <!-- Title Section -->
+            <div class="text-center space-y-4">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold title-font text-white leading-tight" id="welcome-title">
+                    Welcome to<br>
+                    <span class="bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+                        Funbi-chan's Gallery
+                    </span>
+                </h1>
+                
+                <div class="flex items-center justify-center gap-2 text-2xl mb-4">
+                    <span class="animate-pulse">💙</span>
+                    <span class="animate-pulse" style="animation-delay: 0.5s;">💚</span>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <p class="text-lg md:text-xl text-white/80 max-w-lg text-center leading-relaxed" id="welcome-desc">
+                A curated collection of precious moments and memories, created with love and care just for you.
+                <br><br>
+                <span class="text-white/60 text-base italic">Your exclusive access awaits.</span>
+            </p>
+
+            <!-- Enter Button -->
+            <button onclick="enterGallery()" 
+                class="px-8 py-4 btn-primary text-white font-semibold rounded-xl focus:ring-2 focus:ring-blue-500/50 focus:outline-none text-lg mt-4">
+                <span class="flex items-center gap-2">
+                    Enter Gallery
+                    <span class="text-xl">→</span>
+                </span>
+            </button>
+        </div>
+
+        <!-- Copyright -->
+        <div class="text-white/40 text-sm text-center mt-8 fade-in" style="animation-delay: 0.6s;">
+            &copy; <span id="year"></span> Made with 💙 for Funbi-chan
+        </div>
+    </main>
+
+    <!-- About Modal -->
+    <div id="aboutModal" class="fixed inset-0 z-50 modal-backdrop flex items-center justify-center transition-all duration-300 opacity-0 pointer-events-none">
+        <div class="glass-strong max-w-md w-full mx-4 rounded-2xl p-8 shadow-2xl text-center flex flex-col gap-6 relative">
+            <button onclick="closeAbout()" class="absolute top-4 right-4 w-8 h-8 rounded-full glass flex items-center justify-center text-white/80 hover:text-white hover:bg-white/20 transition-all">
+                ✕
+            </button>
+            
+            <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-blue-500 to-emerald-600 flex items-center justify-center mb-2">
+                <span class="text-3xl">💙</span>
+            </div>
+            
+            <h3 class="text-2xl font-bold text-white title-font">About This Gallery</h3>
+            
+            <p class="text-white/80 leading-relaxed">
+                This gallery was crafted with love, containing special moments and memories that are close to my heart. 
+                Every photo and video here tells a story of beautiful times shared.
+                <br><br>
+                <span class="text-cyan-300 font-medium">Thank you for being part of this journey. 💙</span>
+            </p>
+            
+            <a href="mailto:your@email.com" 
+               class="px-6 py-3 btn-primary text-white font-semibold rounded-xl hover:scale-105 transition-all duration-300 text-center no-underline">
+                Send a Message 💌
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Consent modal logic
+        const modal = document.getElementById('consentModal');
+        const agreeBtn = document.getElementById('agreeConsent');
+        const declineBtn = document.getElementById('declineConsent');
+
+        if (localStorage.getItem('funbiGalleryConsent') === 'yes') {
+            modal.style.display = 'none';
+        }
+
+        agreeBtn.onclick = () => {
+            localStorage.setItem('funbiGalleryConsent', 'yes');
+            modal.style.opacity = '0';
+            setTimeout(() => { modal.style.display = 'none'; }, 400);
+        };
+
+        declineBtn.onclick = () => {
+            window.location.href = 'https://google.com';
+        };
+
+        // About modal logic
+        const aboutModal = document.getElementById('aboutModal');
+        const aboutBtn = document.getElementById('aboutBtn');
+
+        function closeAbout() {
+            aboutModal.style.opacity = '0';
+            aboutModal.style.pointerEvents = 'none';
+        }
+
+        aboutBtn.onclick = function() {
+            aboutModal.style.opacity = '1';
+            aboutModal.style.pointerEvents = 'auto';
+        };
+
+        aboutModal.onclick = function(e) {
+            if (e.target === aboutModal) closeAbout();
+        };
+
+        // Theme system
+        const themes = {
+            dark: {
+                body: 'linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)',
+                icon: '🌙'
+            },
+            light: {
+                body: 'linear-gradient(-45deg, #dbeafe, #d1fae5, #bae6fd, #a7f3d0)',
+                icon: '☀️'
+            }
+        };
+
+        const themeBtn = document.getElementById('themeToggleBtn');
+        const themeIcon = document.getElementById('themeToggleIcon');
+
+        function setTheme(mode) {
+            const body = document.body;
+            if (mode === 'light') {
+                body.style.background = themes.light.body;
+                body.style.backgroundSize = '400% 400%';
+                themeIcon.textContent = themes.light.icon;
+            } else {
+                body.style.background = themes.dark.body;
+                body.style.backgroundSize = '400% 400%';
+                themeIcon.textContent = themes.dark.icon;
+            }
+            localStorage.setItem('funbiTheme', mode);
+        }
+
+        function toggleTheme() {
+            const current = localStorage.getItem('funbiTheme') || 'dark';
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        }
+
+        themeBtn.onclick = toggleTheme;
+        setTheme(localStorage.getItem('funbiTheme') || 'dark');
+
+        // Enter gallery function
+        function enterGallery() {
+            // Add a nice transition effect
+            document.body.style.transition = 'opacity 0.5s ease-out';
+            document.body.style.opacity = '0';
+            
+            setTimeout(() => {
+                window.location.href = 'peter-gallery.html';
+            }, 500);
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeAbout();
+            }
+            if (e.key === 'Enter' && localStorage.getItem('funbiGalleryConsent') === 'yes') {
+                enterGallery();
+            }
+        });
+    </script>
+</body>
+</html>
