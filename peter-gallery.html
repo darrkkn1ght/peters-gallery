@@ -108,61 +108,70 @@
         /* Modern CSS Grid System */
         .masonry-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            padding: 1.5rem 0;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            padding: 1rem 0;
         }
         
         @media (min-width: 480px) {
             .masonry-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-                gap: 2rem;
-                padding: 2rem 0;
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 1.25rem;
+                padding: 1.25rem 0;
             }
         }
         
         @media (min-width: 640px) {
             .masonry-grid {
-                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-                gap: 2.5rem;
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
             }
         }
         
         @media (min-width: 768px) {
             .masonry-grid {
-                grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-                gap: 2.75rem;
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 1.75rem;
             }
         }
         
         @media (min-width: 1024px) {
             .masonry-grid {
-                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-                gap: 3rem;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 2rem;
             }
         }
         
         @media (min-width: 1280px) {
             .masonry-grid {
-                grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-                gap: 3.5rem;
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                gap: 2.25rem;
             }
         }
         
         @media (min-width: 1536px) {
             .masonry-grid {
-                grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-                gap: 4rem;
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+                gap: 2.5rem;
             }
         }
         
         /* Grid item sizing variants */
         .grid-item-tall {
             grid-row: span 2;
+            max-height: 500px;
         }
         
         .grid-item-wide {
             grid-column: span 2;
+        }
+        
+        .grid-item-small {
+            max-height: 250px;
+        }
+        
+        .grid-item-medium {
+            max-height: 350px;
         }
         
         @media (max-width: 1023px) {
@@ -192,7 +201,7 @@
         .media-card {
             position: relative;
             overflow: hidden;
-            border-radius: 2rem;
+            border-radius: 1.5rem;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             transform-style: preserve-3d;
@@ -203,6 +212,7 @@
                 0 8px 32px rgba(0, 0, 0, 0.12),
                 0 2px 8px rgba(0, 0, 0, 0.08),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            max-height: 400px;
         }
 
         .media-card:hover {
@@ -2061,8 +2071,8 @@
             
             grid.innerHTML = filteredItems.map((item, idx) => {
                 const src = item.src || `media/${item.filename}`;
-                const variants = ['grid-item-tall', 'grid-item-wide', ''];
-                const variant = variants[idx % 3];
+                const variants = ['grid-item-small', 'grid-item-medium', 'grid-item-tall', 'grid-item-wide', ''];
+                const variant = variants[idx % 5];
                 
                 const badges = ['💙 New', '💚 Favorite', '⭐ Special', ''];
                 const badge = idx % 7 === 0 ? badges[idx % 3] : '';
@@ -2095,7 +2105,7 @@
                                 </svg>
                             </button>
                             
-                            <div class="aspect-square relative overflow-hidden">
+                            <div class="relative overflow-hidden" style="aspect-ratio: 4/3; max-height: 300px;">
                                 ${mediaElement}
                             </div>
                             
