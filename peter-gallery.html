@@ -11,14 +11,69 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            /* Modern Color Palette */
+            --primary-50: #eff6ff;
+            --primary-100: #dbeafe;
+            --primary-200: #bfdbfe;
+            --primary-300: #93c5fd;
+            --primary-400: #60a5fa;
+            --primary-500: #3b82f6;
+            --primary-600: #2563eb;
+            --primary-700: #1d4ed8;
+            --primary-800: #1e40af;
+            --primary-900: #1e3a8a;
+            
+            --secondary-50: #f0fdf4;
+            --secondary-100: #dcfce7;
+            --secondary-200: #bbf7d0;
+            --secondary-300: #86efac;
+            --secondary-400: #4ade80;
+            --secondary-500: #22c55e;
+            --secondary-600: #16a34a;
+            --secondary-700: #15803d;
+            --secondary-800: #166534;
+            --secondary-900: #14532d;
+            
+            --accent-50: #fdf2f8;
+            --accent-100: #fce7f3;
+            --accent-200: #fbcfe8;
+            --accent-300: #f9a8d4;
+            --accent-400: #f472b6;
+            --accent-500: #ec4899;
+            --accent-600: #db2777;
+            --accent-700: #be185d;
+            --accent-800: #9d174d;
+            --accent-900: #831843;
+            
+            /* Gradients */
+            --primary-gradient: linear-gradient(135deg, var(--primary-500) 0%, var(--secondary-500) 100%);
+            --secondary-gradient: linear-gradient(135deg, var(--accent-500) 0%, var(--primary-500) 100%);
+            --accent-gradient: linear-gradient(135deg, var(--primary-400) 0%, var(--accent-400) 100%);
+            
+            /* Glass Effects */
             --glass-bg: rgba(255, 255, 255, 0.08);
             --glass-border: rgba(255, 255, 255, 0.2);
             --glass-strong: rgba(255, 255, 255, 0.12);
+            --glass-card: rgba(255, 255, 255, 0.05);
+            
+            /* Text Colors */
             --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.8);
-            --text-tertiary: rgba(255, 255, 255, 0.6);
+            --text-secondary: rgba(255, 255, 255, 0.9);
+            --text-tertiary: rgba(255, 255, 255, 0.7);
+            --text-quaternary: rgba(255, 255, 255, 0.5);
+            
+            /* Surface Colors */
+            --surface-primary: rgba(15, 23, 42, 0.8);
+            --surface-secondary: rgba(30, 41, 59, 0.6);
+            --surface-tertiary: rgba(51, 65, 85, 0.4);
+            
+            /* Shadow Colors */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.3);
         }
 
         body {
@@ -50,15 +105,71 @@
             box-shadow: 0 12px 40px 0 rgba(37, 99, 235, 0.3);
         }
 
-        /* Enhanced Masonry Grid */
+        /* Modern CSS Grid System */
         .masonry-grid {
-            column-count: 1;
-            column-gap: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding: 1.5rem 0;
         }
-        @media (min-width: 640px) { .masonry-grid { column-count: 2; } }
-        @media (min-width: 768px) { .masonry-grid { column-count: 3; } }
-        @media (min-width: 1024px) { .masonry-grid { column-count: 4; } }
-        @media (min-width: 1280px) { .masonry-grid { column-count: 5; } }
+        
+        @media (min-width: 480px) {
+            .masonry-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 2rem;
+                padding: 2rem 0;
+            }
+        }
+        
+        @media (min-width: 640px) {
+            .masonry-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                gap: 2.5rem;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .masonry-grid {
+                grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+                gap: 2.75rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .masonry-grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+                gap: 3rem;
+            }
+        }
+        
+        @media (min-width: 1280px) {
+            .masonry-grid {
+                grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+                gap: 3.5rem;
+            }
+        }
+        
+        @media (min-width: 1536px) {
+            .masonry-grid {
+                grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+                gap: 4rem;
+            }
+        }
+        
+        /* Grid item sizing variants */
+        .grid-item-tall {
+            grid-row: span 2;
+        }
+        
+        .grid-item-wide {
+            grid-column: span 2;
+        }
+        
+        @media (max-width: 1023px) {
+            .grid-item-wide {
+                grid-column: span 1;
+            }
+        }
 
         .media-item {
             break-inside: avoid;
@@ -81,9 +192,27 @@
         .media-card {
             position: relative;
             overflow: hidden;
-            border-radius: 1.5rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 2rem;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
+            transform-style: preserve-3d;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.12),
+                0 2px 8px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .media-card:hover {
+            transform: translateY(-16px) scale(1.02) rotateX(2deg);
+            box-shadow: 
+                0 32px 64px rgba(0, 0, 0, 0.25),
+                0 8px 32px rgba(59, 130, 246, 0.15),
+                0 2px 8px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-color: rgba(59, 130, 246, 0.3);
         }
 
         .media-card::before {
@@ -100,10 +229,7 @@
             opacity: 1;
         }
 
-        .media-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-        }
+        /* Enhanced hover effects moved above */
 
         .media-overlay {
             position: absolute;
@@ -223,6 +349,148 @@
             font-family: 'Playfair Display', serif;
         }
 
+        /* Enhanced Typography System */
+        :root {
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+            --font-size-5xl: 3rem;
+            
+            --line-height-tight: 1.25;
+            --line-height-snug: 1.375;
+            --line-height-normal: 1.5;
+            --line-height-relaxed: 1.625;
+            --line-height-loose: 2;
+            
+            --font-weight-light: 300;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            --font-weight-extrabold: 800;
+        }
+
+        .text-display {
+            font-size: var(--font-size-5xl);
+            line-height: var(--line-height-tight);
+            font-weight: var(--font-weight-bold);
+            letter-spacing: -0.025em;
+        }
+
+        .text-heading-1 {
+            font-size: var(--font-size-4xl);
+            line-height: var(--line-height-tight);
+            font-weight: var(--font-weight-bold);
+            letter-spacing: -0.025em;
+        }
+
+        .text-heading-2 {
+            font-size: var(--font-size-3xl);
+            line-height: var(--line-height-snug);
+            font-weight: var(--font-weight-semibold);
+            letter-spacing: -0.025em;
+        }
+
+        .text-heading-3 {
+            font-size: var(--font-size-2xl);
+            line-height: var(--line-height-snug);
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .text-body-large {
+            font-size: var(--font-size-lg);
+            line-height: var(--line-height-relaxed);
+            font-weight: var(--font-weight-normal);
+        }
+
+        .text-body {
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-normal);
+            font-weight: var(--font-weight-normal);
+        }
+
+        .text-body-small {
+            font-size: var(--font-size-sm);
+            line-height: var(--line-height-normal);
+            font-weight: var(--font-weight-normal);
+        }
+
+        .text-caption {
+            font-size: var(--font-size-xs);
+            line-height: var(--line-height-normal);
+            font-weight: var(--font-weight-medium);
+            letter-spacing: 0.025em;
+        }
+
+        /* Comprehensive Spacing System */
+        :root {
+            --space-0: 0;
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --space-24: 6rem;
+            --space-32: 8rem;
+            --space-40: 10rem;
+            --space-48: 12rem;
+            --space-56: 14rem;
+            --space-64: 16rem;
+        }
+
+        /* Spacing utility classes */
+        .p-xs { padding: var(--space-1); }
+        .p-sm { padding: var(--space-2); }
+        .p-md { padding: var(--space-4); }
+        .p-lg { padding: var(--space-6); }
+        .p-xl { padding: var(--space-8); }
+        .p-2xl { padding: var(--space-12); }
+        .p-3xl { padding: var(--space-16); }
+
+        .px-xs { padding-left: var(--space-1); padding-right: var(--space-1); }
+        .px-sm { padding-left: var(--space-2); padding-right: var(--space-2); }
+        .px-md { padding-left: var(--space-4); padding-right: var(--space-4); }
+        .px-lg { padding-left: var(--space-6); padding-right: var(--space-6); }
+        .px-xl { padding-left: var(--space-8); padding-right: var(--space-8); }
+
+        .py-xs { padding-top: var(--space-1); padding-bottom: var(--space-1); }
+        .py-sm { padding-top: var(--space-2); padding-bottom: var(--space-2); }
+        .py-md { padding-top: var(--space-4); padding-bottom: var(--space-4); }
+        .py-lg { padding-top: var(--space-6); padding-bottom: var(--space-6); }
+        .py-xl { padding-top: var(--space-8); padding-bottom: var(--space-8); }
+
+        .m-xs { margin: var(--space-1); }
+        .m-sm { margin: var(--space-2); }
+        .m-md { margin: var(--space-4); }
+        .m-lg { margin: var(--space-6); }
+        .m-xl { margin: var(--space-8); }
+        .m-2xl { margin: var(--space-12); }
+
+        .mb-xs { margin-bottom: var(--space-1); }
+        .mb-sm { margin-bottom: var(--space-2); }
+        .mb-md { margin-bottom: var(--space-4); }
+        .mb-lg { margin-bottom: var(--space-6); }
+        .mb-xl { margin-bottom: var(--space-8); }
+        .mb-2xl { margin-bottom: var(--space-12); }
+
+        .mt-xs { margin-top: var(--space-1); }
+        .mt-sm { margin-top: var(--space-2); }
+        .mt-md { margin-top: var(--space-4); }
+        .mt-lg { margin-top: var(--space-6); }
+        .mt-xl { margin-top: var(--space-8); }
+        .mt-2xl { margin-top: var(--space-12); }
+
         /* Modal Styles */
         .modal-backdrop {
             backdrop-filter: blur(12px);
@@ -308,26 +576,812 @@
         .zoom-animation.active {
             transform: scale(1);
         }
+
+        /* Enhanced micro-interactions for gallery */
+        .interactive-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interactive-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+            z-index: 1;
+        }
+
+        .interactive-card:hover::before {
+            left: 100%;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Magnetic effect for buttons */
+        .magnetic-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .magnetic-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        /* Ripple effect */
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .ripple:active::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Pulse animation for special elements */
+        .pulse-glow {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(59, 130, 246, 0.6), 0 0 60px rgba(16, 185, 129, 0.3);
+            }
+        }
+
+        /* Enhanced Staggered animation for grid items */
+        .stagger-animation {
+            animation: staggerFadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+        }
+
+        @keyframes staggerFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(20px) scale(0.98);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Smooth entrance animation */
+        .entrance-animation {
+            animation: entranceSlide 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            opacity: 0;
+            transform: scale(0.9) translateY(60px);
+        }
+
+        @keyframes entranceSlide {
+            0% {
+                opacity: 0;
+                transform: scale(0.9) translateY(60px);
+            }
+            60% {
+                opacity: 0.9;
+                transform: scale(1.02) translateY(-10px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Micro-interaction improvements */
+        .smooth-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .smooth-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        /* Enhanced focus states */
+        .focus-enhanced:focus {
+            outline: 2px solid var(--primary-500);
+            outline-offset: 2px;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Enhanced filter buttons */
+        .filter-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .filter-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Loading skeleton */
+        .skeleton {
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 25%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.1) 75%);
+            background-size: 200% 100%;
+            animation: skeletonLoading 1.5s infinite;
+        }
+
+        @keyframes skeletonLoading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Slideshow Mode Styles */
+        .slideshow-mode {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .slideshow-mode.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .slideshow-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+            padding: 2rem;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .slideshow-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 2rem;
+        }
+
+        .slideshow-media {
+            max-width: 90vw;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 1rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .slideshow-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            z-index: 10;
+        }
+
+        .slideshow-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .slideshow-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .slideshow-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .slideshow-progress {
+            flex: 1;
+            max-width: 300px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slideshow-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .slideshow-counter {
+            color: white;
+            font-weight: 500;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .slideshow-info {
+            position: absolute;
+            top: 50%;
+            left: 2rem;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 1rem 1.5rem;
+            border-radius: 1rem;
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .slideshow-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .slideshow-meta {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        /* Search Bar Styles */
+        .search-container {
+            position: relative;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 3rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 2rem;
+            color: white;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.25rem;
+        }
+
+        .search-clear {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .search-clear:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        /* Metadata Display */
+        .metadata-panel {
+            position: absolute;
+            top: 50%;
+            right: 2rem;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-width: 200px;
+            opacity: 0;
+            transform: translateY(-50%) translateX(20px);
+            transition: all 0.3s ease;
+        }
+
+        .metadata-panel.show {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .metadata-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+        }
+
+        .metadata-label {
+            opacity: 0.7;
+            font-weight: 500;
+        }
+
+        .metadata-value {
+            font-weight: 600;
+        }
+
+        /* Keyboard shortcuts hint */
+        .keyboard-hint {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.75rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Romantic Gallery Features */
+        .love-counter {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(236, 72, 153, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(236, 72, 153, 0.3);
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            color: white;
+            z-index: 50;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .love-counter .heart {
+            color: #ec4899;
+            margin-right: 0.5rem;
+        }
+
+        .romantic-toast {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.9), rgba(255, 192, 203, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            font-weight: 600;
+        }
+
+        .memory-tag {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 0.5rem;
+            background: rgba(236, 72, 153, 0.9);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 5;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .media-card:hover .memory-tag {
+            opacity: 1;
+        }
+
+        .romantic-filter {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(255, 192, 203, 0.2));
+            border: 1px solid rgba(236, 72, 153, 0.4);
+            color: white;
+        }
+
+        .romantic-filter:hover {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.3), rgba(255, 192, 203, 0.3));
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        .love-memory {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .love-memory::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(236, 72, 153, 0.1), transparent);
+            transition: left 0.6s ease;
+            z-index: 1;
+        }
+
+        .love-memory:hover::before {
+            left: 100%;
+        }
+
+        .special-memory {
+            border: 2px solid rgba(236, 72, 153, 0.5);
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+        }
+
+        .anniversary-badge {
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+            background: linear-gradient(135deg, #ec4899, #f472b6);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            z-index: 10;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Advanced Loading States */
+        .loading-skeleton {
+            background: linear-gradient(90deg, 
+                rgba(255, 255, 255, 0.1) 25%, 
+                rgba(255, 255, 255, 0.2) 50%, 
+                rgba(255, 255, 255, 0.1) 75%);
+            background-size: 200% 100%;
+            animation: skeletonLoading 1.5s infinite;
+            border-radius: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loading-skeleton::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.1), 
+                transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .media-loading {
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .media-loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            margin: -20px 0 0 -20px;
+            border: 3px solid rgba(59, 130, 246, 0.3);
+            border-top: 3px solid #3b82f6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .media-error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(239, 68, 68, 0.8);
+            font-size: 0.875rem;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .media-error::before {
+            content: '⚠️';
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* Progressive Image Loading */
+        .progressive-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progressive-image img {
+            transition: opacity 0.3s ease;
+        }
+
+        .progressive-image img[data-loaded="false"] {
+            opacity: 0;
+        }
+
+        .progressive-image img[data-loaded="true"] {
+            opacity: 1;
+        }
+
+        /* Video Thumbnail Enhancement */
+        .video-thumbnail-enhanced {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-thumbnail-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(59, 130, 246, 0.1), 
+                rgba(16, 185, 129, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .video-thumbnail-enhanced:hover::before {
+            opacity: 1;
+        }
+
+        .video-play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            z-index: 2;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .video-thumbnail-enhanced:hover .video-play-button {
+            background: rgba(59, 130, 246, 0.8);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        /* Image Zoom Preview */
+        .image-zoom-preview {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .image-zoom-preview.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .image-zoom-preview img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 0.5rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Performance Optimizations */
+        .lazy-load {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .lazy-load.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .intersection-observer {
+            will-change: transform, opacity;
+        }
+
+        /* Memory Management */
+        .media-cache {
+            display: none;
+        }
+
+        /* Responsive Image Sizing */
+        .responsive-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .responsive-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Video Optimization */
+        .video-optimized {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: #000;
+        }
+
+        .video-optimized::-webkit-media-controls {
+            display: none;
+        }
+
+        /* Loading Progress Bar */
+        .loading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+
+        .loading-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Performance Metrics */
+        .performance-indicator {
+            position: fixed;
+            bottom: 1rem;
+            left: 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            z-index: 50;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .performance-indicator.show {
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="min-h-screen relative overflow-x-hidden">
     <!-- Header -->
     <header class="header-glass sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="max-w-7xl mx-auto px-lg py-md md:px-xl md:py-lg">
             <div class="flex items-center justify-between">
-                <div class="flex items-center gap-4">
-                    <button onclick="window.location.href='index.html'" class="glass px-4 py-2 rounded-xl hover:bg-white/20 transition-all text-white/80 hover:text-white">
-                        ← Back
+                <div class="flex items-center gap-md md:gap-lg">
+                    <button onclick="window.location.href='index.html'" class="glass px-md py-sm md:px-lg md:py-md rounded-xl md:rounded-2xl hover:bg-white/20 transition-all text-white/80 hover:text-white magnetic-btn ripple">
+                        <span class="hidden sm:inline">← Back</span>
+                        <span class="sm:hidden">←</span>
                     </button>
-                    <h1 class="text-2xl font-bold text-white title-font">
-                        Funbi-chan's Gallery
-                        <span class="text-cyan-300 ml-2">💙💚</span>
+                    <h1 class="text-heading-3 md:text-heading-2 text-white title-font">
+                        <span class="hidden sm:inline">Funbi-chan's Gallery</span>
+                        <span class="sm:hidden">Gallery</span>
+                        <span class="text-cyan-300 ml-xs md:ml-sm">💙💚</span>
                     </h1>
                 </div>
-                <div class="flex items-center gap-4">
-                    <span class="text-white/70 text-sm" id="mediaCount">29 items</span>
-                    <button onclick="toggleView()" class="btn-primary focus:ring-2 focus:ring-blue-500/50 focus:outline-none">
-                        <span id="viewToggle">Grid View</span>
+                <div class="flex items-center gap-sm md:gap-lg">
+                    <!-- Search Bar -->
+                    <div class="search-container hidden md:block">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="searchInput" class="search-input" placeholder="Search memories..." />
+                        <button id="searchClear" class="search-clear" style="display: none;">✕</button>
+                    </div>
+                    <span class="text-white/70 text-caption md:text-body-small hidden sm:inline" id="mediaCount">29 items</span>
+                    <button onclick="toggleView()" class="btn-primary focus:ring-2 focus:ring-blue-500/50 focus:outline-none magnetic-btn ripple px-sm py-xs md:px-lg md:py-md text-caption md:text-body">
+                        <span id="viewToggle" class="hidden sm:inline">Grid View</span>
+                        <span class="sm:hidden">Grid</span>
+                    </button>
+                    <button onclick="startSlideshow()" class="btn-primary focus:ring-2 focus:ring-blue-500/50 focus:outline-none magnetic-btn ripple px-sm py-xs md:px-lg md:py-md" title="Start Slideshow">
+                        🎬
                     </button>
                 </div>
             </div>
@@ -335,19 +1389,22 @@
     </header>
 
     <!-- Filter Section -->
-    <div class="max-w-7xl mx-auto px-6 py-6">
-        <div class="flex flex-wrap gap-4 mb-8 items-center">
-            <span class="text-lg font-medium text-white/90 mr-2">Filter:</span>
-            <button onclick="filterMedia('all')" class="filter-btn active focus:ring-2 focus:ring-blue-500/50 focus:outline-none">
-                All (29)
+    <div class="max-w-7xl mx-auto px-lg md:px-xl py-lg md:py-xl">
+        <div class="flex flex-wrap gap-md md:gap-lg mb-xl md:mb-2xl items-center">
+            <span class="text-body md:text-body-large font-medium text-white/90 mr-xs md:mr-sm">Filter:</span>
+            <button onclick="filterMedia('all')" class="filter-btn active focus:ring-2 focus:ring-blue-500/50 focus:outline-none magnetic-btn ripple text-caption md:text-body px-sm py-xs md:px-lg md:py-md">
+                <span class="hidden sm:inline">All (29)</span>
+                <span class="sm:hidden">All</span>
             </button>
-            <button onclick="filterMedia('videos')" class="filter-btn focus:ring-2 focus:ring-blue-500/50 focus:outline-none">
-                Videos (10)
+            <button onclick="filterMedia('videos')" class="filter-btn focus:ring-2 focus:ring-blue-500/50 focus:outline-none magnetic-btn ripple text-caption md:text-body px-sm py-xs md:px-lg md:py-md">
+                <span class="hidden sm:inline">Videos (10)</span>
+                <span class="sm:hidden">Videos</span>
             </button>
-            <button onclick="filterMedia('images')" class="filter-btn focus:ring-2 focus:ring-blue-500/50 focus:outline-none">
-                Images (19)
+            <button onclick="filterMedia('images')" class="filter-btn focus:ring-2 focus:ring-blue-500/50 focus:outline-none magnetic-btn ripple text-caption md:text-body px-sm py-xs md:px-lg md:py-md">
+                <span class="hidden sm:inline">Images (19)</span>
+                <span class="sm:hidden">Images</span>
             </button>
-            <button id="uploadBtn" aria-label="Upload Media" class="ml-auto btn-primary focus:ring-2 focus:ring-blue-500/50 focus:outline-none">
+            <button id="uploadBtn" aria-label="Upload Media" class="ml-auto btn-primary focus:ring-2 focus:ring-blue-500/50 focus:outline-none magnetic-btn ripple px-sm py-xs md:px-lg md:py-md text-caption md:text-body">
                 <span class="hidden md:inline">Upload New</span>
                 <span class="inline md:hidden">+</span>
             </button>
@@ -360,11 +1417,11 @@
         </div>
 
         <!-- Empty State -->
-        <div id="emptyState" class="hidden text-center py-16">
-            <div class="glass-strong rounded-2xl p-12 max-w-md mx-auto">
-                <div class="text-6xl mb-6">📸</div>
-                <h3 class="text-2xl font-semibold text-white mb-4 title-font">No Memories Yet</h3>
-                <p class="text-white/70 mb-6">Start building your beautiful collection by uploading some photos or videos.</p>
+        <div id="emptyState" class="hidden text-center py-3xl">
+            <div class="glass-strong rounded-3xl p-3xl max-w-lg mx-auto">
+                <div class="text-6xl mb-xl">📸</div>
+                <h3 class="text-heading-2 text-white mb-lg title-font">No Memories Yet</h3>
+                <p class="text-body-large text-white/70 mb-xl">Start building your beautiful collection by uploading some photos or videos.</p>
                 <button onclick="document.getElementById('uploadInput').click()" class="btn-primary">
                     Upload Your First Memory
                 </button>
@@ -373,9 +1430,26 @@
     </div>
 
     <!-- Back to Top Button -->
-    <button id="backToTopBtn" type="button" onclick="scrollToTop()" class="back-to-top btn-primary shadow-2xl focus:ring-2 focus:ring-blue-500/50 focus:outline-none">
+    <button id="backToTopBtn" type="button" onclick="scrollToTop()" class="back-to-top btn-primary shadow-2xl focus:ring-2 focus:ring-blue-500/50 focus:outline-none magnetic-btn ripple">
         ↑ Top
     </button>
+
+    <!-- Love Counter -->
+    <div class="love-counter" id="loveCounter">
+        <span class="heart">💕</span>
+        <span id="favoriteCount">0</span> Favorites
+    </div>
+
+    <!-- Loading Progress Bar -->
+    <div class="loading-progress" id="loadingProgress">
+        <div class="loading-progress-bar" id="loadingProgressBar"></div>
+    </div>
+
+    <!-- Performance Indicator -->
+    <div class="performance-indicator" id="performanceIndicator">
+        <div>Media: <span id="loadedCount">0</span>/<span id="totalCount">0</span></div>
+        <div>Memory: <span id="memoryUsage">0</span>MB</div>
+    </div>
 
     <!-- Lightbox Modal -->
     <div id="lightbox" class="fixed inset-0 z-50 hidden modal-backdrop">
@@ -390,7 +1464,7 @@
                                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
                             </svg>
                         </button>
-                        <button onclick="closeLightbox()" class="w-10 h-10 rounded-xl glass hover:bg-white/20 flex items-center justify-center text-white/80 hover:text-white transition-all focus:ring-2 focus:ring-red-500/50 focus:outline-none">
+                        <button onclick="closeLightbox()" class="w-10 h-10 rounded-xl glass hover:bg-white/20 flex items-center justify-center text-white/80 hover:text-white transition-all focus:ring-2 focus:ring-red-500/50 focus:outline-none magnetic-btn ripple">
                             ✕
                         </button>
                     </div>
@@ -411,6 +1485,76 @@
     <!-- Toast Notification -->
     <div id="gallery-toast" class="fixed left-1/2 bottom-20 z-[100] px-6 py-3 toast shadow-2xl min-w-[200px] text-center pointer-events-none select-none transition-all duration-500 opacity-0 transform -translate-x-1/2 translate-y-4">
         <span id="gallery-toast-message"></span>
+    </div>
+
+    <!-- Slideshow Mode -->
+    <div id="slideshowMode" class="slideshow-mode">
+        <div class="slideshow-header">
+            <div class="flex items-center gap-4">
+                <button onclick="exitSlideshow()" class="slideshow-btn magnetic-btn ripple">
+                    ✕
+                </button>
+                <h2 class="text-xl font-semibold text-white">Slideshow Mode</h2>
+            </div>
+            <div class="flex items-center gap-4">
+                <button id="slideshowPlayPause" onclick="toggleSlideshowPlay()" class="slideshow-btn magnetic-btn ripple">
+                    ⏸️
+                </button>
+                <button onclick="toggleMetadata()" class="slideshow-btn magnetic-btn ripple" title="Toggle Metadata">
+                    ℹ️
+                </button>
+            </div>
+        </div>
+
+        <div class="slideshow-content">
+            <div id="slideshowMediaContainer">
+                <!-- Media will be inserted here -->
+            </div>
+            
+            <div id="slideshowInfo" class="slideshow-info">
+                <div id="slideshowTitle" class="slideshow-title">Memory 1</div>
+                <div id="slideshowMeta" class="slideshow-meta">funbi1.mp4</div>
+            </div>
+
+            <div id="metadataPanel" class="metadata-panel">
+                <div class="metadata-item">
+                    <span class="metadata-label">Type:</span>
+                    <span id="metaType" class="metadata-value">Video</span>
+                </div>
+                <div class="metadata-item">
+                    <span class="metadata-label">Size:</span>
+                    <span id="metaSize" class="metadata-value">2.4 MB</span>
+                </div>
+                <div class="metadata-item">
+                    <span class="metadata-label">Duration:</span>
+                    <span id="metaDuration" class="metadata-value">0:15</span>
+                </div>
+                <div class="metadata-item">
+                    <span class="metadata-label">Added:</span>
+                    <span id="metaDate" class="metadata-value">Today</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="slideshow-controls">
+            <button id="slideshowPrev" onclick="previousSlide()" class="slideshow-btn magnetic-btn ripple">
+                ⏮️
+            </button>
+            
+            <div class="slideshow-progress">
+                <div id="slideshowProgressBar" class="slideshow-progress-bar" style="width: 0%"></div>
+            </div>
+            
+            <div id="slideshowCounter" class="slideshow-counter">1 / 29</div>
+            
+            <button id="slideshowNext" onclick="nextSlide()" class="slideshow-btn magnetic-btn ripple">
+                ⏭️
+            </button>
+        </div>
+
+        <div class="keyboard-hint">
+            Press ← → for navigation, Space to play/pause, Esc to exit
+        </div>
     </div>
 
     <script>
@@ -439,10 +1583,293 @@
         let localMediaItems = [];
         let currentFilter = 'all';
         let currentView = 'grid';
+        let searchQuery = '';
+        let slideshowActive = false;
+        let slideshowIndex = 0;
+        let slideshowInterval = null;
+        let slideshowPlaying = false;
+        let metadataVisible = false;
+        
+        // Performance and loading state variables
+        let loadedMediaCount = 0;
+        let totalMediaCount = 0;
+        let mediaCache = new Map();
+        let intersectionObserver = null;
+        let loadingStates = new Map();
+        let performanceMetrics = {
+            startTime: Date.now(),
+            loadedImages: 0,
+            loadedVideos: 0,
+            memoryUsage: 0
+        };
 
         // Utility functions
         function getAllMediaItems() {
             return baseMediaItems.concat(localMediaItems);
+        }
+
+        // Advanced Media Handling
+        function createImageThumbnail(src, alt, itemId) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.crossOrigin = 'anonymous';
+                
+                img.onload = () => {
+                    // Create canvas for thumbnail generation
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    // Calculate thumbnail dimensions (max 300x300)
+                    const maxSize = 300;
+                    let { width, height } = img;
+                    
+                    if (width > height) {
+                        if (width > maxSize) {
+                            height = (height * maxSize) / width;
+                            width = maxSize;
+                        }
+                    } else {
+                        if (height > maxSize) {
+                            width = (width * maxSize) / height;
+                            height = maxSize;
+                        }
+                    }
+                    
+                    canvas.width = width;
+                    canvas.height = height;
+                    
+                    // Draw image to canvas
+                    ctx.drawImage(img, 0, 0, width, height);
+                    
+                    // Convert to data URL
+                    const thumbnailDataUrl = canvas.toDataURL('image/jpeg', 0.8);
+                    
+                    // Cache the thumbnail
+                    mediaCache.set(itemId, {
+                        original: src,
+                        thumbnail: thumbnailDataUrl,
+                        dimensions: { width, height }
+                    });
+                    
+                    resolve(thumbnailDataUrl);
+                };
+                
+                img.onerror = () => {
+                    reject(new Error('Failed to load image'));
+                };
+                
+                img.src = src;
+            });
+        }
+
+        function createVideoThumbnail(src, itemId) {
+            return new Promise((resolve, reject) => {
+                const video = document.createElement('video');
+                video.crossOrigin = 'anonymous';
+                video.muted = true;
+                video.preload = 'metadata';
+                
+                video.onloadedmetadata = () => {
+                    // Seek to 1 second or 10% of duration
+                    const seekTime = Math.min(1, video.duration * 0.1);
+                    video.currentTime = seekTime;
+                };
+                
+                video.onseeked = () => {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    // Set canvas dimensions
+                    canvas.width = 300;
+                    canvas.height = 300;
+                    
+                    // Draw video frame to canvas
+                    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                    
+                    // Convert to data URL
+                    const thumbnailDataUrl = canvas.toDataURL('image/jpeg', 0.8);
+                    
+                    // Cache the thumbnail
+                    mediaCache.set(itemId, {
+                        original: src,
+                        thumbnail: thumbnailDataUrl,
+                        duration: video.duration,
+                        dimensions: { width: canvas.width, height: canvas.height }
+                    });
+                    
+                    resolve(thumbnailDataUrl);
+                };
+                
+                video.onerror = () => {
+                    reject(new Error('Failed to load video'));
+                };
+                
+                video.src = src;
+            });
+        }
+
+        function setupLazyLoading() {
+            if (!intersectionObserver) {
+                intersectionObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const mediaElement = entry.target;
+                            const itemId = mediaElement.dataset.itemId;
+                            
+                            if (itemId && !loadingStates.get(itemId)) {
+                                loadMediaItem(mediaElement, itemId);
+                            }
+                        }
+                    });
+                }, {
+                    rootMargin: '50px 0px',
+                    threshold: 0.1
+                });
+            }
+        }
+
+        function loadMediaItem(mediaElement, itemId) {
+            loadingStates.set(itemId, 'loading');
+            updateLoadingProgress();
+            
+            const item = getAllMediaItems().find(i => i.id == itemId);
+            if (!item) return;
+            
+            const src = item.src || `media/${item.filename}`;
+            
+            if (item.type === 'video') {
+                loadVideoWithThumbnail(mediaElement, src, itemId);
+            } else {
+                loadImageWithThumbnail(mediaElement, src, itemId);
+            }
+        }
+
+        function loadImageWithThumbnail(mediaElement, src, itemId) {
+            const img = mediaElement.querySelector('img');
+            if (!img) return;
+            
+            // Check cache first
+            if (mediaCache.has(itemId)) {
+                const cached = mediaCache.get(itemId);
+                img.src = cached.thumbnail;
+                img.dataset.loaded = 'true';
+                onMediaLoaded(itemId);
+                return;
+            }
+            
+            // Create thumbnail
+            createImageThumbnail(src, '', itemId)
+                .then(thumbnailDataUrl => {
+                    img.src = thumbnailDataUrl;
+                    img.dataset.loaded = 'true';
+                    onMediaLoaded(itemId);
+                })
+                .catch(error => {
+                    console.error('Error creating thumbnail:', error);
+                    showMediaError(mediaElement, 'Failed to load image');
+                });
+        }
+
+        function loadVideoWithThumbnail(mediaElement, src, itemId) {
+            const video = mediaElement.querySelector('video');
+            if (!video) return;
+            
+            // Check cache first
+            if (mediaCache.has(itemId)) {
+                const cached = mediaCache.get(itemId);
+                video.poster = cached.thumbnail;
+                video.dataset.loaded = 'true';
+                onMediaLoaded(itemId);
+                return;
+            }
+            
+            // Create thumbnail
+            createVideoThumbnail(src, itemId)
+                .then(thumbnailDataUrl => {
+                    video.poster = thumbnailDataUrl;
+                    video.src = src;
+                    video.dataset.loaded = 'true';
+                    onMediaLoaded(itemId);
+                })
+                .catch(error => {
+                    console.error('Error creating video thumbnail:', error);
+                    showMediaError(mediaElement, 'Failed to load video');
+                });
+        }
+
+        function onMediaLoaded(itemId) {
+            loadedMediaCount++;
+            loadingStates.set(itemId, 'loaded');
+            updateLoadingProgress();
+            updatePerformanceMetrics();
+            
+            // Add loaded class for animation
+            const mediaElement = document.querySelector(`[data-item-id="${itemId}"]`);
+            if (mediaElement) {
+                mediaElement.classList.add('loaded');
+            }
+        }
+
+        function showMediaError(mediaElement, message) {
+            loadingStates.set(mediaElement.dataset.itemId, 'error');
+            mediaElement.innerHTML = `
+                <div class="media-error">
+                    <div>${message}</div>
+                </div>
+            `;
+            updateLoadingProgress();
+        }
+
+        function updateLoadingProgress() {
+            const progressBar = document.getElementById('loadingProgressBar');
+            const progress = totalMediaCount > 0 ? (loadedMediaCount / totalMediaCount) * 100 : 0;
+            
+            if (progressBar) {
+                progressBar.style.width = `${progress}%`;
+            }
+            
+            // Hide progress bar when complete
+            if (loadedMediaCount >= totalMediaCount && totalMediaCount > 0) {
+                setTimeout(() => {
+                    const progressContainer = document.getElementById('loadingProgress');
+                    if (progressContainer) {
+                        progressContainer.style.opacity = '0';
+                        setTimeout(() => {
+                            progressContainer.style.display = 'none';
+                        }, 500);
+                    }
+                }, 1000);
+            }
+        }
+
+        function updatePerformanceMetrics() {
+            const loadedCountEl = document.getElementById('loadedCount');
+            const totalCountEl = document.getElementById('totalCount');
+            const memoryUsageEl = document.getElementById('memoryUsage');
+            
+            if (loadedCountEl) loadedCountEl.textContent = loadedMediaCount;
+            if (totalCountEl) totalCountEl.textContent = totalMediaCount;
+            
+            // Estimate memory usage (rough calculation)
+            const estimatedMemory = Math.round((loadedMediaCount * 0.5) * 10) / 10;
+            if (memoryUsageEl) memoryUsageEl.textContent = estimatedMemory;
+            
+            performanceMetrics.memoryUsage = estimatedMemory;
+        }
+
+        function preloadCriticalMedia() {
+            const criticalItems = getAllMediaItems().slice(0, 6); // Preload first 6 items
+            criticalItems.forEach(item => {
+                const src = item.src || `media/${item.filename}`;
+                if (item.type === 'image') {
+                    const img = new Image();
+                    img.src = src;
+                } else {
+                    const video = document.createElement('video');
+                    video.src = src;
+                    video.preload = 'metadata';
+                }
+            });
         }
 
         function saveLocalMediaItems() {
@@ -487,13 +1914,74 @@
             let favs = getFavorites();
             if (favs.includes(id)) {
                 favs = favs.filter(fid => fid !== id);
-                showToast('Removed from favorites');
+                showRomanticToast('Removed from favorites 💔', 'romantic-toast');
             } else {
                 favs.push(id);
-                showToast('Added to favorites 💙');
+                showRomanticToast('Added to favorites 💕', 'romantic-toast');
+                // Create floating heart effect
+                createFloatingHeart();
             }
             setFavorites(favs);
+            updateFavoriteCount();
             renderGallery();
+        }
+
+        function showRomanticToast(message, className = '') {
+            const toast = document.getElementById('gallery-toast');
+            const toastMsg = document.getElementById('gallery-toast-message');
+            if (!toast || !toastMsg) return;
+            
+            toast.className = `fixed left-1/2 bottom-20 z-[100] px-6 py-3 toast shadow-2xl min-w-[200px] text-center pointer-events-none select-none transition-all duration-500 opacity-0 transform -translate-x-1/2 translate-y-4 ${className}`;
+            toastMsg.textContent = message;
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateX(-50%) translateY(0)';
+            
+            clearTimeout(window.__galleryToastTimeout);
+            window.__galleryToastTimeout = setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(-50%) translateY(1rem)';
+            }, 3000);
+        }
+
+        function updateFavoriteCount() {
+            const favoriteCount = document.getElementById('favoriteCount');
+            if (favoriteCount) {
+                const favs = getFavorites();
+                favoriteCount.textContent = favs.length;
+            }
+        }
+
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.style.position = 'fixed';
+            heart.style.fontSize = '24px';
+            heart.style.color = '#ec4899';
+            heart.style.pointerEvents = 'none';
+            heart.style.zIndex = '1000';
+            heart.textContent = '💕';
+            
+            // Random position
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.top = Math.random() * window.innerHeight + 'px';
+            
+            document.body.appendChild(heart);
+            
+            // Animate heart
+            let opacity = 1;
+            let scale = 1;
+            const animate = () => {
+                opacity -= 0.02;
+                scale += 0.02;
+                heart.style.opacity = opacity;
+                heart.style.transform = `scale(${scale}) translateY(-${(1 - opacity) * 50}px)`;
+                
+                if (opacity > 0) {
+                    requestAnimationFrame(animate);
+                } else {
+                    document.body.removeChild(heart);
+                }
+            };
+            animate();
         }
 
         function showToast(msg) {
@@ -512,14 +2000,48 @@
             }, 3000);
         }
 
+        // Search functionality
+        function initSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const searchClear = document.getElementById('searchClear');
+            
+            if (!searchInput || !searchClear) return;
+
+            searchInput.addEventListener('input', function() {
+                searchQuery = this.value.toLowerCase().trim();
+                searchClear.style.display = searchQuery ? 'block' : 'none';
+                renderGallery();
+            });
+
+            searchClear.addEventListener('click', function() {
+                searchInput.value = '';
+                searchQuery = '';
+                this.style.display = 'none';
+                renderGallery();
+            });
+        }
+
+        function filterBySearch(items) {
+            if (!searchQuery) return items;
+            return items.filter(item => 
+                item.title.toLowerCase().includes(searchQuery) ||
+                item.filename.toLowerCase().includes(searchQuery) ||
+                (item.type === 'video' && 'video'.includes(searchQuery)) ||
+                (item.type === 'image' && 'image'.includes(searchQuery))
+            );
+        }
+
         // Gallery rendering
         function renderGallery() {
             const grid = document.getElementById('galleryGrid');
             const emptyState = document.getElementById('emptyState');
             const allItems = getAllMediaItems();
             
-            const filteredItems = currentFilter === 'all' ? allItems : 
+            let filteredItems = currentFilter === 'all' ? allItems : 
                 allItems.filter(item => currentFilter === 'videos' ? item.type === 'video' : item.type === 'image');
+            
+            // Apply search filter
+            filteredItems = filterBySearch(filteredItems);
 
             // Update counts
             updateMediaCounts();
@@ -532,22 +2054,38 @@
 
             emptyState.classList.add('hidden');
             
+            // Update total count for loading progress
+            totalMediaCount = filteredItems.length;
+            loadedMediaCount = 0;
+            updatePerformanceMetrics();
+            
             grid.innerHTML = filteredItems.map((item, idx) => {
                 const src = item.src || `media/${item.filename}`;
-                const variants = ['media-tall', 'media-short', 'media-wide', ''];
-                const variant = variants[idx % 4];
+                const variants = ['grid-item-tall', 'grid-item-wide', ''];
+                const variant = variants[idx % 3];
                 
                 const badges = ['💙 New', '💚 Favorite', '⭐ Special', ''];
                 const badge = idx % 7 === 0 ? badges[idx % 3] : '';
                 
                 const mediaElement = item.type === 'video'
-                    ? `<video src="${src}" class="w-full h-full object-cover" muted preload="metadata"></video>`
-                    : `<img src="${src}" alt="${item.title}" class="w-full h-full object-cover" loading="lazy">`;
+                    ? `<div class="video-thumbnail-enhanced">
+                        <video class="w-full h-full video-optimized" muted preload="none" data-loaded="false"></video>
+                        <div class="video-play-button">▶</div>
+                       </div>`
+                    : `<div class="progressive-image">
+                        <img alt="${item.title}" class="w-full h-full responsive-image" data-loaded="false" loading="lazy">
+                       </div>`;
 
+                const isSpecial = idx % 7 === 0; // Every 7th item is special
+                const isAnniversary = idx % 10 === 0; // Every 10th item is anniversary
+                const memoryTags = ['First Date', 'Anniversary', 'Special Moment', 'Adventure', 'Quiet Time', 'Celebration'];
+                const randomTag = memoryTags[idx % memoryTags.length];
+                
                 return `
-                    <div class="media-item ${variant}" data-type="${item.type}" style="animation-delay: ${idx * 50}ms;">
-                        <div class="media-card glass-strong ${item.type === 'video' ? 'video-thumbnail' : ''}" onclick="openLightbox('${item.filename}', '${item.type}', '${item.title}', ${item.isLocal || false}, ${item.id})">
+                    <div class="media-item ${variant} stagger-animation lazy-load intersection-observer" data-type="${item.type}" data-item-id="${item.id}" style="animation-delay: ${idx * 100}ms;">
+                        <div class="media-card glass-strong interactive-card love-memory ${isSpecial ? 'special-memory' : ''} ${item.type === 'video' ? 'video-thumbnail' : ''}" onclick="openLightbox('${item.filename}', '${item.type}', '${item.title}', ${item.isLocal || false}, ${item.id})">
                             ${badge ? `<div class="badge">${badge}</div>` : ''}
+                            ${isAnniversary ? `<div class="anniversary-badge">💕 Special</div>` : ''}
                             
                             <button class="like-btn ${isFavorite(item.id) ? 'liked' : ''}" 
                                     onclick="event.stopPropagation(); toggleFavorite(${item.id});" 
@@ -562,12 +2100,23 @@
                             </div>
                             
                             <div class="media-overlay">
-                                <div class="media-title">${item.title}</div>
+                                <div class="media-title text-body font-medium">${item.title}</div>
                             </div>
+                            
+                            <div class="memory-tag text-caption">${randomTag}</div>
                         </div>
                     </div>
                 `;
             }).join('');
+            
+            // Initialize lazy loading after DOM update
+            setTimeout(() => {
+                setupLazyLoading();
+                const mediaElements = document.querySelectorAll('.media-item[data-item-id]');
+                mediaElements.forEach(element => {
+                    intersectionObserver.observe(element);
+                });
+            }, 100);
         }
 
         function updateMediaCounts() {
@@ -575,7 +2124,12 @@
             const videoCount = allItems.filter(item => item.type === 'video').length;
             const imageCount = allItems.filter(item => item.type === 'image').length;
             
-            document.getElementById('mediaCount').textContent = `${allItems.length} items`;
+            // Get current filtered count for display
+            let filteredItems = currentFilter === 'all' ? allItems : 
+                allItems.filter(item => currentFilter === 'videos' ? item.type === 'video' : item.type === 'image');
+            filteredItems = filterBySearch(filteredItems);
+            
+            document.getElementById('mediaCount').textContent = `${filteredItems.length} of ${allItems.length} items`;
             
             // Update filter button texts
             document.querySelector('[onclick="filterMedia(\'all\')"]').textContent = `All (${allItems.length})`;
@@ -715,6 +2269,138 @@
             };
         }
 
+        // Slideshow functionality
+        function startSlideshow() {
+            const filteredItems = getCurrentFilteredItems();
+            if (filteredItems.length === 0) {
+                showToast('No items to display in slideshow');
+                return;
+            }
+
+            slideshowActive = true;
+            slideshowIndex = 0;
+            slideshowPlaying = true;
+            
+            document.getElementById('slideshowMode').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            updateSlideshowDisplay();
+            startSlideshowTimer();
+            showToast('Slideshow started! Use arrow keys to navigate');
+        }
+
+        function exitSlideshow() {
+            slideshowActive = false;
+            slideshowPlaying = false;
+            clearInterval(slideshowInterval);
+            
+            document.getElementById('slideshowMode').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function getCurrentFilteredItems() {
+            const allItems = getAllMediaItems();
+            let filteredItems = currentFilter === 'all' ? allItems : 
+                allItems.filter(item => currentFilter === 'videos' ? item.type === 'video' : item.type === 'image');
+            return filterBySearch(filteredItems);
+        }
+
+        function updateSlideshowDisplay() {
+            const filteredItems = getCurrentFilteredItems();
+            if (filteredItems.length === 0) return;
+
+            const currentItem = filteredItems[slideshowIndex];
+            const container = document.getElementById('slideshowMediaContainer');
+            const title = document.getElementById('slideshowTitle');
+            const meta = document.getElementById('slideshowMeta');
+            const counter = document.getElementById('slideshowCounter');
+            const progressBar = document.getElementById('slideshowProgressBar');
+
+            // Update media
+            const src = currentItem.src || `media/${currentItem.filename}`;
+            if (currentItem.type === 'video') {
+                container.innerHTML = `
+                    <video class="slideshow-media" controls autoplay muted>
+                        <source src="${src}" type="video/mp4">
+                    </video>
+                `;
+            } else {
+                container.innerHTML = `
+                    <img src="${src}" alt="${currentItem.title}" class="slideshow-media">
+                `;
+            }
+
+            // Update info
+            title.textContent = currentItem.title;
+            meta.textContent = currentItem.filename;
+            counter.textContent = `${slideshowIndex + 1} / ${filteredItems.length}`;
+            progressBar.style.width = `${((slideshowIndex + 1) / filteredItems.length) * 100}%`;
+
+            // Update metadata panel
+            updateMetadataDisplay(currentItem);
+
+            // Update button states
+            document.getElementById('slideshowPrev').disabled = slideshowIndex === 0;
+            document.getElementById('slideshowNext').disabled = slideshowIndex === filteredItems.length - 1;
+        }
+
+        function nextSlide() {
+            const filteredItems = getCurrentFilteredItems();
+            if (slideshowIndex < filteredItems.length - 1) {
+                slideshowIndex++;
+                updateSlideshowDisplay();
+            }
+        }
+
+        function previousSlide() {
+            if (slideshowIndex > 0) {
+                slideshowIndex--;
+                updateSlideshowDisplay();
+            }
+        }
+
+        function toggleSlideshowPlay() {
+            slideshowPlaying = !slideshowPlaying;
+            const btn = document.getElementById('slideshowPlayPause');
+            btn.textContent = slideshowPlaying ? '⏸️' : '▶️';
+            
+            if (slideshowPlaying) {
+                startSlideshowTimer();
+            } else {
+                clearInterval(slideshowInterval);
+            }
+        }
+
+        function startSlideshowTimer() {
+            if (!slideshowPlaying) return;
+            
+            clearInterval(slideshowInterval);
+            slideshowInterval = setInterval(() => {
+                const filteredItems = getCurrentFilteredItems();
+                if (slideshowIndex < filteredItems.length - 1) {
+                    nextSlide();
+                } else {
+                    // Loop back to start
+                    slideshowIndex = 0;
+                    updateSlideshowDisplay();
+                }
+            }, 5000); // 5 seconds per slide
+        }
+
+        function toggleMetadata() {
+            metadataVisible = !metadataVisible;
+            const panel = document.getElementById('metadataPanel');
+            panel.classList.toggle('show', metadataVisible);
+        }
+
+        function updateMetadataDisplay(item) {
+            // Mock metadata - in a real app, you'd get this from the file
+            document.getElementById('metaType').textContent = item.type === 'video' ? 'Video' : 'Image';
+            document.getElementById('metaSize').textContent = '2.4 MB'; // Mock size
+            document.getElementById('metaDuration').textContent = item.type === 'video' ? '0:15' : 'N/A';
+            document.getElementById('metaDate').textContent = 'Today'; // Mock date
+        }
+
         // Utility functions
         function toggleView() {
             // Placeholder for future list/grid view toggle
@@ -741,8 +2427,38 @@
 
             // Keyboard shortcuts
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeLightbox();
+                if (slideshowActive) {
+                    // Slideshow keyboard shortcuts
+                    switch(e.key) {
+                        case 'Escape':
+                            exitSlideshow();
+                            break;
+                        case 'ArrowRight':
+                        case ' ':
+                            e.preventDefault();
+                            if (e.key === ' ') {
+                                toggleSlideshowPlay();
+                            } else {
+                                nextSlide();
+                            }
+                            break;
+                        case 'ArrowLeft':
+                            e.preventDefault();
+                            previousSlide();
+                            break;
+                        case 'm':
+                        case 'M':
+                            toggleMetadata();
+                            break;
+                    }
+                } else {
+                    // Regular keyboard shortcuts
+                    if (e.key === 'Escape') {
+                        closeLightbox();
+                    }
+                    if (e.key === 's' || e.key === 'S') {
+                        document.getElementById('searchInput')?.focus();
+                    }
                 }
             });
 
@@ -758,9 +2474,68 @@
         function initGallery() {
             loadLocalMediaItems();
             initUpload();
+            initSearch();
             initEventListeners();
+            preloadCriticalMedia();
             renderGallery();
             updateFilterButtons();
+            updateFavoriteCount();
+            initRomanticFeatures();
+            initPerformanceMonitoring();
+        }
+
+        // Initialize performance monitoring
+        function initPerformanceMonitoring() {
+            // Show performance indicator in development
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                const perfIndicator = document.getElementById('performanceIndicator');
+                if (perfIndicator) {
+                    perfIndicator.classList.add('show');
+                }
+            }
+
+            // Monitor memory usage
+            setInterval(() => {
+                if (performance.memory) {
+                    const memoryMB = Math.round(performance.memory.usedJSHeapSize / 1048576);
+                    performanceMetrics.memoryUsage = memoryMB;
+                    updatePerformanceMetrics();
+                }
+            }, 5000);
+
+            // Monitor loading performance
+            window.addEventListener('load', () => {
+                const loadTime = Date.now() - performanceMetrics.startTime;
+                console.log(`Gallery loaded in ${loadTime}ms`);
+            });
+        }
+
+        // Initialize romantic features for gallery
+        function initRomanticFeatures() {
+            // Add romantic keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'h' || e.key === 'H') {
+                    showRomanticToast('💕 You found the secret! This gallery was made with love! 💕', 'romantic-toast');
+                }
+            });
+
+            // Add special click interactions
+            let clickCount = 0;
+            let lastClickTime = 0;
+            
+            document.addEventListener('click', (e) => {
+                const now = Date.now();
+                if (now - lastClickTime < 1000) {
+                    clickCount++;
+                    if (clickCount === 10) {
+                        showRomanticToast('💖 You really love exploring our memories! 💖', 'romantic-toast');
+                        clickCount = 0;
+                    }
+                } else {
+                    clickCount = 1;
+                }
+                lastClickTime = now;
+            });
         }
 
         // Start when DOM is loaded
